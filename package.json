@@ -1,0 +1,30 @@
+{
+  "name": "radio-ys",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "vue-cli-service serve"
+  },
+  "dependencies": {
+    "@mdi/font": "7.0.96",
+    "vite-plugin-vuetify": "^1.0.2",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.5",
+    "vue3-audio-player": "^1.0.7",
+    "vuetify": "^3.1.6",
+    "vuetify-audio": "^0.3.3",
+    "vuex": "^4.1.0",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "prettier": "2.7.1",
+    "vite": "^4.1.0"
+  }
+}
