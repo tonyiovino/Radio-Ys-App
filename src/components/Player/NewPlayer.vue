@@ -1,22 +1,16 @@
 <template>
   <v-card class="text-center pb-2" variant="tonal" min-width="80%">
-    <v-card-media>
-      <v-img
-        v-if="!isPlaying"
-        :lazy-src="option_.coverImage"
-        height="60%"
-        cover
-      >
-        <template v-slot:placeholder>
-          <v-container class="d-flex align-center justify-center fill-height">
-            <v-btn @click="play" size="x-large">
-              <v-icon icon="mdi-play" size="x-large" />
-            </v-btn>
-          </v-container>
-        </template>
-      </v-img>
-      <v-img v-else :src="option_.coverImage" height="60%" cover />
-    </v-card-media>
+    <v-img v-if="!isPlaying" :lazy-src="option_.coverImage" height="60%" cover>
+      <template v-slot:placeholder>
+        <v-container class="d-flex align-center justify-center fill-height">
+          <v-btn @click="play" size="x-large">
+            <v-icon icon="mdi-play" size="x-large" />
+          </v-btn>
+        </v-container>
+      </template>
+    </v-img>
+    <v-img v-else :src="option_.coverImage" height="60%" cover />
+
     <v-card-title v-if="option_.title">
       {{ option_.title }}
     </v-card-title>
