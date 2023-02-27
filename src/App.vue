@@ -6,7 +6,7 @@
     <v-app-bar>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <!-- <v-icon>$vuetify.icons.custom</v-icon> -->
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Radio YS</v-toolbar-title>
       <v-btn-toggle @click="toggleTheme" rounded="xl">
         <v-fade-transition mode="out-in">
           <v-btn
