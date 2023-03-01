@@ -22,7 +22,7 @@
         /> -->
     <v-card-actions class="justify-space-between">
       <v-row class="d-flex">
-        <v-col cols="6">
+        <v-col cols="6" class="d-flex">
           <v-btn variant="text">
             <v-icon
               @click="toggleMute"
@@ -30,7 +30,15 @@
               size="x-large"
             ></v-icon>
           </v-btn>
+          <v-slider
+            v-model="slider"
+            :max="100"
+            :min="0"
+            :tick-size="1"
+            density="default"
+          ></v-slider>
         </v-col>
+        <!-- <v-btn @click="show"> Clicca </v-btn> -->
         <v-col cols="6" class="d-flex align-center justify-center">
           <div class="audio__player-time">
             <span>{{ `${formatSecond(currentTime)}` }}</span>
@@ -87,6 +95,7 @@
 
 <script lang="ts">
 import {
+  computed,
   defineComponent,
   nextTick,
   onMounted,
@@ -142,6 +151,12 @@ export default defineComponent({
     'progress-click',
   ],
   setup(props, { emit }) {
+    //   max: 90,
+    //   slider: 40,
+    // }
+
+    const slider = ref(100)
+
     const audioPlayer = ref()
     const audioProgressWrap = ref()
     const audioProgressPoint = ref()
@@ -158,6 +173,12 @@ export default defineComponent({
       totalTime: 0,
       totalTimeStr: '00:00',
     })
+
+    // const newVolume = computed(() => {
+    //   audioPlayer.value.volume = slider.value / 100
+    //   return audioPlayer.value.volume
+    // })
+
     //tips: initialize the state when switch music.
     const initState = () => {
       state.isPlaying = false
@@ -176,6 +197,7 @@ export default defineComponent({
         audioProgressWrap.value.offsetWidth
       state.currentTime = audioPlayer.value.currentTime
       audioProgress.value.style.width = `${offsetLeft}px`
+      audioPlayer.value.volume = slider.value / 100
       setPointPosition(offsetLeft)
       emit('playing')
     }
@@ -354,6 +376,11 @@ export default defineComponent({
       // IconPlay,
       // IconPause,
       // CoverImageDefault,
+
+      // test
+      // setVolumeAudio,
+      slider,
+      // show,
     }
   },
 })
