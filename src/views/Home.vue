@@ -1,5 +1,5 @@
 <template>
-  <v-container class="h-screen align-start" fluid>
+  <v-container class="h-screen align-start mb-10" fluid>
     <v-row
       align-content="center"
       justify="center"
@@ -11,22 +11,69 @@
         </v-container>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col>
-        <v-divider class="border-opacity-100" inset></v-divider>
+    <v-divider class="my-10 border-opacity-80"></v-divider>
+
+    <!-- <v-row>
+      <v-col class="mt-2" cols="12">
+        <strong>Category {{ n }}</strong>
       </v-col>
-    </v-row>
+
+      <v-col v-for="j in 6" :key="`${n}${j}`" cols="6" md="2">
+        <v-sheet height="150"></v-sheet>
+      </v-col>
+    </v-row> -->
+    <v-carousel
+      height="300"
+      cycle
+      hide-delimiter-background
+      show-arrows="hover"
+      delimiter-icon="mdi-cat"
+    >
+      <v-carousel-item
+        v-for="img in images"
+        :key="img"
+        :src="img"
+        cover
+      ></v-carousel-item>
+    </v-carousel>
   </v-container>
 </template>
 
 <script>
 import Radio from '@/components/Radio.vue'
+import { ref } from 'vue'
 
 export default {
   components: {
     appRadio: Radio,
   },
-  setup() {},
+  setup() {
+    const length = ref(3)
+    const onboarding = ref(0)
+
+    const images = ref([
+      'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
+      'https://cdn.vuetifyjs.com/images/cards/hotel.jpg',
+      'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+    ])
+
+    const next = () => {
+      onboarding.value =
+        onboarding.value + 1 > length.value ? 1 : onboarding.value + 1
+    }
+    const prev = () => {
+      onboarding.value =
+        onboarding.value - 1 <= 0 ? length.value : onboarding.value - 1
+    }
+
+    return {
+      length,
+      onboarding,
+      next,
+      prev,
+      images,
+    }
+  },
 }
 </script>
 

@@ -151,10 +151,6 @@ export default defineComponent({
     'progress-click',
   ],
   setup(props, { emit }) {
-    //   max: 90,
-    //   slider: 40,
-    // }
-
     const slider = ref(100)
 
     const audioPlayer = ref()
