@@ -3,7 +3,7 @@
     <v-img v-if="!isPlaying" :lazy-src="option_.coverImage" height="60%" cover>
       <template v-slot:placeholder>
         <v-container class="d-flex align-center justify-center fill-height">
-          <v-btn @click="play" size="x-large">
+          <v-btn @click="play" icon class="rounded-circle" size="x-large">
             <v-icon icon="mdi-play" size="x-large" />
           </v-btn>
         </v-container>
