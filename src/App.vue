@@ -1,12 +1,7 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer">
-      <!-- Componente A parte -->
-    </v-navigation-drawer>
     <v-app-bar>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <!-- <v-icon>$vuetify.icons.custom</v-icon> -->
-      <v-toolbar-title>Radio-YS</v-toolbar-title>
+      <v-toolbar-title>Radio YS</v-toolbar-title>
       <v-btn-toggle @click="toggleTheme" rounded="xl">
         <v-fade-transition mode="out-in">
           <v-btn
@@ -29,6 +24,26 @@
       <app-home-test v-if="route.path == '/test'" />
       <app-home v-else />
     </v-main>
+
+    <v-bottom-navigation mode="shift">
+      <v-btn>
+        <v-icon>mdi-television-play</v-icon>
+
+        <span>Video</span>
+      </v-btn>
+
+      <v-btn active>
+        <v-icon>mdi-home</v-icon>
+
+        <span>Home</span>
+      </v-btn>
+
+      <v-btn>
+        <v-icon>mdi-book</v-icon>
+
+        <span>Book</span>
+      </v-btn>
+    </v-bottom-navigation>
   </v-app>
 </template>
 

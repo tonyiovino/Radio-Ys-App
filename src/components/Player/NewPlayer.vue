@@ -26,7 +26,7 @@
           <v-btn variant="text">
             <v-icon
               @click="toggleMute"
-              :icon="isMuted ? `mdi-volume-mute` : `mdi-volume-high`"
+              :icon="isMuted ? `mdi-volume-mute` : newIconVolume"
               size="x-large"
             ></v-icon>
           </v-btn>
@@ -43,8 +43,6 @@
           <div class="audio__player-time">
             <span>{{ `${formatSecond(currentTime)}` }}</span>
           </div>
-
-          <!-- <v-slider v-model="media" prepend-icon="mdi-volume-high"></v-slider> -->
 
           <div class="audio__player-progress-container">
             <div
@@ -151,12 +149,8 @@ export default defineComponent({
     'progress-click',
   ],
   setup(props, { emit }) {
-    //   max: 90,
-    //   slider: 40,
-    // }
-
     const slider = ref(100)
-
+    const actual_audio_icon = ref()
     const audioPlayer = ref()
     const audioProgressWrap = ref()
     const audioProgressPoint = ref()
@@ -174,10 +168,19 @@ export default defineComponent({
       totalTimeStr: '00:00',
     })
 
-    // const newVolume = computed(() => {
-    //   audioPlayer.value.volume = slider.value / 100
-    //   return audioPlayer.value.volume
-    // })
+    const newIconVolume = computed(() => {
+      console.log(slider.value)
+      if (slider.value == 0) {
+        actual_audio_icon.value = 'mdi-volume-mute'
+      } else if (slider.value <= 25) {
+        actual_audio_icon.value = 'mdi-volume-low'
+      } else if (slider.value <= 75) {
+        actual_audio_icon.value = 'mdi-volume-medium'
+      } else if (slider.value <= 100) {
+        actual_audio_icon.value = 'mdi-volume-high'
+      }
+      return actual_audio_icon.value
+    })
 
     //tips: initialize the state when switch music.
     const initState = () => {
@@ -373,6 +376,7 @@ export default defineComponent({
       audioProgressWrap,
       audioProgressPoint,
       audioProgress,
+      newIconVolume,
       // IconPlay,
       // IconPause,
       // CoverImageDefault,
