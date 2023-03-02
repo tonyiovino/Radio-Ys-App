@@ -376,7 +376,6 @@ export default defineComponent({
       audioProgressWrap,
       audioProgressPoint,
       audioProgress,
-      newIconVolume,
       // IconPlay,
       // IconPause,
       // CoverImageDefault,
@@ -384,6 +383,7 @@ export default defineComponent({
       // test
       // setVolumeAudio,
       slider,
+      newIconVolume,
       // show,
     }
   },
