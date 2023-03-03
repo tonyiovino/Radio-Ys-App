@@ -26,7 +26,7 @@
       height="300"
       cycle
       hide-delimiter-background
-      show-arrows="hover"
+      :show-arrows="false"
       delimiter-icon="mdi-cat"
     >
       <v-carousel-item
@@ -49,7 +49,6 @@ export default {
   },
   setup() {
     const length = ref(3)
-    const onboarding = ref(0)
 
     const images = ref([
       'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
@@ -57,20 +56,8 @@ export default {
       'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
     ])
 
-    const next = () => {
-      onboarding.value =
-        onboarding.value + 1 > length.value ? 1 : onboarding.value + 1
-    }
-    const prev = () => {
-      onboarding.value =
-        onboarding.value - 1 <= 0 ? length.value : onboarding.value - 1
-    }
-
     return {
       length,
-      onboarding,
-      next,
-      prev,
       images,
     }
   },
