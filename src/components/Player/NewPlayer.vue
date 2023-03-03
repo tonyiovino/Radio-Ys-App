@@ -14,23 +14,19 @@
     <v-card-title v-if="option_.title">
       {{ option_.title }}
     </v-card-title>
-    <!-- <img
-      :src="option_.coverImage ? option_.coverImage : CoverImageDefault"
-      :class="`${
-          isPlaying && option_.coverRotate ? 'audio__player-spin-anim' : ''
-        }`"
-        /> -->
     <v-card-actions class="justify-space-between">
       <v-row class="d-flex">
-        <v-col cols="6" class="d-flex">
+        <v-col cols="8" class="d-flex align-center">
           <v-btn variant="text">
             <v-icon
               @click="toggleMute"
-              :icon="isMuted ? `mdi-volume-mute` : newIconVolume"
+              :icon="isMuted ? `mdi-volume-off` : newIconVolume"
               size="x-large"
             ></v-icon>
           </v-btn>
           <v-slider
+            hide-details
+            :thumb-size="16"
             v-model="slider"
             :max="100"
             :min="0"
@@ -38,8 +34,7 @@
             density="default"
           ></v-slider>
         </v-col>
-        <!-- <v-btn @click="show"> Clicca </v-btn> -->
-        <v-col cols="6" class="d-flex align-center justify-center">
+        <v-col cols="4" class="d-flex align-center justify-center">
           <div class="audio__player-time">
             <span>{{ `${formatSecond(currentTime)}` }}</span>
           </div>
@@ -73,9 +68,6 @@
           </div>
         </v-col>
       </v-row>
-      <!-- <v-btn @click="togglePlayer">
-        <v-icon :icon="isPlaying ? `mdi-pause` : `mdi-play`" size="x-large" />
-      </v-btn> -->
     </v-card-actions>
 
     <audio
