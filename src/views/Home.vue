@@ -13,15 +13,6 @@
     </v-row>
     <v-divider class="my-10 border-opacity-80"></v-divider>
 
-    <!-- <v-row>
-      <v-col class="mt-2" cols="12">
-        <strong>Category {{ n }}</strong>
-      </v-col>
-
-      <v-col v-for="j in 6" :key="`${n}${j}`" cols="6" md="2">
-        <v-sheet height="150"></v-sheet>
-      </v-col>
-    </v-row> -->
     <v-carousel
       height="300"
       cycle

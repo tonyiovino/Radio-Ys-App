@@ -4,22 +4,20 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // import MatchList from '../views/MatchList.vue'
 import Home from '../views/Home.vue'
-import HomeTest from '../views/HomeTest.vue'
 
 const routes = [
   // primary
-
   {
     path: '/',
     name: 'Home',
     component: Home,
   },
 
-  {
-    path: '/test',
-    name: 'Test',
-    component: HomeTest,
-  },
+  // {
+  //   path: '/test',
+  //   name: 'Test',
+  //   component: HomeTest,
+  // },
 ]
 
 const router = createRouter({

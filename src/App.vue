@@ -2,27 +2,11 @@
   <v-app>
     <v-app-bar>
       <v-toolbar-title>Radio YS</v-toolbar-title>
-      <v-btn-toggle @click="toggleTheme" rounded="xl">
-        <v-fade-transition mode="out-in">
-          <v-btn
-            v-if="theme.global.name.value == 'light'"
-            icon="mdi-white-balance-sunny"
-            value="light"
-            variant="plain"
-          ></v-btn>
-          <v-btn
-            v-else
-            icon="mdi-moon-waning-crescent"
-            value="dark"
-            variant="plain"
-          ></v-btn>
-        </v-fade-transition>
-      </v-btn-toggle>
+      <app-toggle-theme />
     </v-app-bar>
 
     <v-main>
-      <app-home-test v-if="route.path == '/test'" />
-      <app-home v-else />
+      <app-home />
     </v-main>
 
     <v-bottom-navigation mode="shift">
@@ -51,13 +35,14 @@
 import { computed, ref } from 'vue'
 import { useTheme } from 'vuetify'
 import { useRoute } from 'vue-router'
+
 import Home from '@/views/Home'
-import HomeTest from '@/views/HomeTest'
+import ToggleTheme from '@/components/ToggleTheme'
 
 export default {
   components: {
     appHome: Home,
-    appHomeTest: HomeTest,
+    appToggleTheme: ToggleTheme,
   },
 
   setup() {
