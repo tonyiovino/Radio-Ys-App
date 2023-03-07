@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import store from '../store'
 
 // import MatchList from '../views/MatchList.vue'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
 
 const routes = [
   // primary
@@ -13,11 +13,17 @@ const routes = [
     component: Home,
   },
 
-  // {
-  //   path: '/test',
-  //   name: 'Test',
-  //   component: HomeTest,
-  // },
+  {
+    path: '/podcast',
+    name: 'Podcast',
+    component: () => import('@/views/Podcasts.vue'),
+  },
+
+  {
+    path: '/book',
+    name: 'Book',
+    component: () => import('@/views/Books.vue'),
+  },
 ]
 
 const router = createRouter({
@@ -25,13 +31,5 @@ const router = createRouter({
   // base: process.env.BASE_URL,
   routes,
 })
-
-// router.beforeEach((to, from, next) => {
-//   if (to.name !== 'MatchList' && !store.getters.isAuthenticated) {
-//     next({ name: 'MatchList' })
-//   } else if (to.name === 'MatchList' && store.getters.isAuthenticated)
-//     next({ name: 'home' })
-//   else next()
-// })
 
 export default router

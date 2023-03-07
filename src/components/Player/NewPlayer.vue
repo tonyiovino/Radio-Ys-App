@@ -161,7 +161,7 @@ export default defineComponent({
     })
 
     const newIconVolume = computed(() => {
-      console.log(slider.value)
+      // console.log(slider.value)
       if (slider.value == 0) {
         actual_audio_icon.value = 'mdi-volume-mute'
       } else if (slider.value <= 25) {

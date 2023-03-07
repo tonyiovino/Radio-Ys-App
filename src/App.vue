@@ -6,47 +6,71 @@
     </v-app-bar>
 
     <v-main>
-      <app-home />
+      <router-view v-slot="{ Component }">
+        <v-fade-transition hide-on-leave>
+          <component :is="Component"></component>
+        </v-fade-transition>
+      </router-view>
     </v-main>
 
-    <v-bottom-navigation mode="shift">
-      <v-btn>
-        <v-icon>mdi-television-play</v-icon>
+    <v-bottom-navigation>
+      <v-btn
+        v-for="(btn, id) in buttons"
+        :key="id"
+        :active="btn.isActive"
+        @click="activeRoute(btn, id)"
+        :to="btn.route"
+      >
+        <v-icon>{{ btn.icon }}</v-icon>
 
-        <span>Video</span>
-      </v-btn>
-
-      <v-btn active>
-        <v-icon>mdi-home</v-icon>
-
-        <span>Home</span>
-      </v-btn>
-
-      <v-btn>
-        <v-icon>mdi-book</v-icon>
-
-        <span>Book</span>
+        <span>{{ btn.text }}</span>
       </v-btn>
     </v-bottom-navigation>
   </v-app>
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { computed, ref, reactive } from 'vue'
 import { useTheme } from 'vuetify'
 import { useRoute } from 'vue-router'
 
-import Home from '@/views/Home'
 import ToggleTheme from '@/components/ToggleTheme'
 
 export default {
   components: {
-    appHome: Home,
     appToggleTheme: ToggleTheme,
   },
 
   setup() {
-    const drawer = ref(null)
+    const buttons = reactive({
+      1: {
+        icon: 'mdi-podcast',
+        text: 'Podcast',
+        route: 'podcast',
+        isActive: false,
+      },
+      2: {
+        icon: 'mdi-home',
+        text: 'Home',
+        route: '/',
+        isActive: false,
+      },
+      3: {
+        icon: 'mdi-book',
+        text: 'Book',
+        route: 'book',
+        isActive: false,
+      },
+    })
+
+    const activeRoute = (butn, id) => {
+      for (let btn in buttons) {
+        buttons[btn].isActive = false
+      }
+      buttons[btn.id].isActive = true
+
+      // console.log(id)
+    }
 
     const route = useRoute()
 
@@ -58,10 +82,11 @@ export default {
         : 'dark')
 
     return {
-      drawer,
       toggleTheme,
       theme,
       route,
+      buttons,
+      activeRoute,
     }
   },
 }
