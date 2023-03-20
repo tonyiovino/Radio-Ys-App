@@ -1,6 +1,11 @@
 <template>
   <v-card class="text-center pb-2" variant="tonal" min-width="80%">
-    <v-img v-if="!isPlaying" :lazy-src="option_.coverImage" height="60%" cover>
+    <v-img
+      height="25vh"
+      :lazy-src="data.coverImage"
+      :src="isPlaying ? data.coverImage : false"
+      cover
+    >
       <template v-slot:placeholder>
         <v-container class="d-flex align-center justify-center fill-height">
           <v-btn @click="play" icon class="rounded-circle" size="x-large">
@@ -9,10 +14,9 @@
         </v-container>
       </template>
     </v-img>
-    <v-img v-else :src="option_.coverImage" height="60%" cover />
 
-    <v-card-title v-if="option_.title">
-      {{ option_.title }}
+    <v-card-title v-if="data.title">
+      {{ data.title }}
     </v-card-title>
     <v-card-actions class="justify-space-between">
       <v-row class="d-flex">
@@ -72,7 +76,7 @@
 
     <audio
       ref="audioPlayer"
-      :src="option_.src"
+      :src="data.src"
       @ended="onAudioEnded"
       @play="onAudioPlay"
       @pause="onAudioPause"
@@ -123,6 +127,9 @@ export default defineComponent({
     option: {
       type: Object as PropType<AudioPlayerOption>,
       default: AudioPlayerOptionDefault,
+    },
+    data: {
+      type: Object,
     },
   },
   emits: [
