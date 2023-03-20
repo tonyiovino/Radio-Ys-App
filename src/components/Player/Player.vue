@@ -3,7 +3,7 @@
     <v-img
       height="25vh"
       :lazy-src="data.coverImage"
-      :src="isPlaying ? data.coverImage : false"
+      :src="isPlaying ? data.coverImage : Object.create(null)"
       cover
     >
       <template v-slot:placeholder>
