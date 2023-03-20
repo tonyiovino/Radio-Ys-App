@@ -17,8 +17,7 @@
       <v-btn
         v-for="(btn, id) in buttons"
         :key="id"
-        :active="btn.isActive"
-        @click="activeRoute(btn, id)"
+        :active="btn.route == route.path"
         :to="btn.route"
       >
         <v-icon>{{ btn.icon }}</v-icon>
@@ -46,7 +45,7 @@ export default {
       1: {
         icon: 'mdi-podcast',
         text: 'Podcast',
-        route: 'podcast',
+        route: '/podcast',
         isActive: false,
       },
       2: {
@@ -58,19 +57,10 @@ export default {
       3: {
         icon: 'mdi-book',
         text: 'Book',
-        route: 'book',
+        route: '/book',
         isActive: false,
       },
     })
-
-    const activeRoute = (butn, id) => {
-      for (let btn in buttons) {
-        buttons[btn].isActive = false
-      }
-      buttons[btn.id].isActive = true
-
-      // console.log(id)
-    }
 
     const route = useRoute()
 
@@ -86,7 +76,6 @@ export default {
       theme,
       route,
       buttons,
-      activeRoute,
     }
   },
 }
