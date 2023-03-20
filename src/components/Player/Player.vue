@@ -21,7 +21,7 @@
     <v-card-actions class="justify-space-between">
       <v-row class="d-flex">
         <v-col cols="8" class="d-flex align-center">
-          <v-btn variant="text">
+          <v-btn class="mr-3" variant="text">
             <v-icon
               @click="toggleMute"
               :icon="isMuted ? `mdi-volume-off` : newIconVolume"
